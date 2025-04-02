@@ -43,7 +43,7 @@ def load_data():
         st.error(f"Error loading data: {e}")
         return None
 
-    # Load data
+
 df = load_data()
 
 if df is not None:
@@ -112,6 +112,9 @@ if df is not None:
         st.subheader("Top Selling Categories by County")
         try:
             # Load GeoJSON file with full path
+
+            gdf = gpd.read_file('C:/Users/joshk/Iowa-Liquor-Dashboard/iowa-counties.geojson')
+
             gdf = gpd.read_file('C:/Users/joshk/IA-Liquor/iowa-counties.geojson')
             # Clean county names in GeoJSON
             gdf['CountyName'] = gdf['CountyName'].apply(clean_county_name)
@@ -379,5 +382,9 @@ if df is not None:
             - Marketing activities
             - Weather
             - Special events
+<<<<<<< HEAD
+            """)
+=======
             """)
             
+>>>>>>> f98bd3dec989e214275f00d0f017a9a631a25ebb
