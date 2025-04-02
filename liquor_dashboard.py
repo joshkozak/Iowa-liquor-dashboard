@@ -7,7 +7,12 @@ st.set_page_config(
 
 import pandas as pd
 import numpy as np
-import plotly.express as px
+try:
+    import plotly.express as px
+except ImportError:
+    import pip
+    pip.main(['install', 'plotly'])
+    import plotly.express as px
 import folium
 from streamlit_folium import st_folium
 import geopandas as gpd
@@ -382,7 +387,7 @@ if df is not None:
             - Marketing activities
             - Weather
             - Special events
-            
+
             """)
 
             
