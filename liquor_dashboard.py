@@ -382,9 +382,9 @@ if df is not None:
             - Marketing activities
             - Weather
             - Special events
-<<<<<<< HEAD
-            """)
-=======
-            """)
             
->>>>>>> f98bd3dec989e214275f00d0f017a9a631a25ebb
+            """)
+
+            
+            
+
