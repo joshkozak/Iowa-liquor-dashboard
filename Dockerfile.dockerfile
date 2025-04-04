@@ -2,17 +2,25 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Install system dependencies for geopandas
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
+    build-essential \
+    python3-dev \
+    python3-pip \
     gdal-bin \
     libgdal-dev \
     gcc \
-    python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install Python dependencies
+# Set environment variables for GDAL
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
+
+# Copy requirements first for better caching
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
